@@ -23,21 +23,10 @@
 
       <div id="selections-header">
         <h3>Selections (Win Odds)</h3>
-        <button class="plus-button" onclick="addSelection()" />
+        <button class="plus-button" onclick="addSelection()">+</button>
       </div>
       <div id="selections">
-        <div id="odds-container">
-          <div class="selection">
-            <input
-              type="number"
-              class="odds"
-              placeholder="Odds for selection 1"
-              value="6"
-              min="1"
-            />
-            <button class="remove-button" onclick="removeSelection()" >
-          </div>
-        </div>
+        <div id="odds-container"></div>
       </div>
 
       <button id="calc-button" onclick="calculateEachWayAccumulator()">

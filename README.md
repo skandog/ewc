@@ -2,6 +2,8 @@
 
 Tired of using buggy, clunky, and downright frustrating calculators for your each-way bets? So was I. That’s why I built this easy-to-use, reliable **Each-Way Accumulator Calculator** that actually works.
 
+[Check out the app here](https://skandog.github.io/ewc/)
+
 ## 🎯 Features
 
 ✅ **Win & Place Returns** – Calculates both sides of your each-way bet.  

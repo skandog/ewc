@@ -15,15 +15,21 @@ input {
   margin: 5px 0;
   padding: 10px;
 }
-button {
+
+#selections-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#calc-button {
   background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
 }
-button:hover {
-  background-color: #0056b3;
-}
+
 .result {
   margin-top: 15px;
   font-weight: bold;

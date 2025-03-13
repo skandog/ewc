@@ -65,6 +65,13 @@ input {
   transform: translate(-50%, -50%);
 }
 
+.selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
 #calc-button {
   background-color: #007bff;
   color: white;

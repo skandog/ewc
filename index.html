@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Each-Way Accumulator Calculator</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Each-Way Accumulator Calculator</h2>
+      <label>Stake (£):</label>
+      <input type="number" id="stake" value="10" min="1" />
+
+      <label>Each-Way Fraction (e.g., 1/5 = 0.2):</label>
+      <input
+        type="number"
+        id="placeFraction"
+        step="0.01"
+        value="0.2"
+        min="0.1"
+        max="0.5"
+      />
+
+      <h3>Selections (Win Odds)</h3>
+      <div id="selections">
+        <input
+          type="number"
+          class="odds"
+          placeholder="Odds for selection 1"
+          value="6"
+          min="1"
+        />
+        <input
+          type="number"
+          class="odds"
+          placeholder="Odds for selection 2"
+          value="4"
+          min="1"
+        />
+        <input
+          type="number"
+          class="odds"
+          placeholder="Odds for selection 3"
+          value="3"
+          min="1"
+        />
+      </div>
+
+      <button onclick="calculateEachWayAccumulator()">Calculate</button>
+
+      <div class="result" id="result"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+  </body>
+</html>

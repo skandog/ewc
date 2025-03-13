@@ -45,7 +45,6 @@ input {
 .plus-button::after {
   content: "";
   position: absolute;
-  /* Light gray plus */
   background-color: #ccc;
 }
 
@@ -64,8 +63,39 @@ input {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.remove-button {
+  width: 24px;
+  height: 24px;
+  background-color: white; /* Match plus background */
+  border: 1px hidden #fff8f8; /* Match plus border */
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Match plus transition */
+}
+
+.remove-button:hover {
+  background-color: #f9f9f9; /* Match plus hover */
+}
+
+.remove-button::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background-color: #999; /* Light gray minus */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease; /* Added background transition to pseudo */
+}
+
+.remove-button:hover::before {
+  background-color: #333; /* Slightly darker gray on hover */
+}
 
 .selection {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

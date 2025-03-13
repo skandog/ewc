@@ -49,3 +49,12 @@ const calculateEachWayAccumulator = () => {
             <p>Total Profit: £${totalProfit.toFixed(2)}</p>
         `;
 };
+
+const addSelection = () => {
+  const oddsContainer = document.getElementById("odds-container");
+  const newInput = document.createElement("input");
+  newInput.type = "text";
+  newInput.className = "odds";
+  newInput.placeholder = "Enter odds";
+  oddsContainer.appendChild(newInput);
+};

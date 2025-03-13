@@ -5,14 +5,14 @@ const calculateEachWayAccumulator = () => {
     parseFloat(document.getElementById("eachWayFraction").value) || 0;
   let oddsInputs = document.querySelectorAll(".odds");
 
-  //   Check if the stake and place fraction values are valid
+  // Check if the stake and place fraction values are valid
   if (stake <= 0 || placeFraction <= 0) {
     document.getElementById("result").innerHTML =
       "<p style='color:red;'>Please enter valid stake and place fraction.</p>";
     return;
   }
 
-  //   We're planning to display the result in the result div,
+  //  We're planning to display the result in the result div,
   // so we'll need all of these variables to store the calculations
   let winAccumulator = 1;
   let placeAccumulator = 1;
@@ -52,9 +52,26 @@ const calculateEachWayAccumulator = () => {
 
 const addSelection = () => {
   const oddsContainer = document.getElementById("odds-container");
-  const newInput = document.createElement("input");
-  newInput.type = "text";
-  newInput.className = "odds";
-  newInput.placeholder = "Enter odds";
-  oddsContainer.appendChild(newInput);
+  const selectionDiv = document.createElement("div");
+  selectionDiv.classList.add("selection");
+
+  const input = document.createElement("input");
+  input.type = "number";
+  input.classList.add("odds");
+  input.placeholder = `Odds for selection ${oddsContainer.children.length + 1}`;
+  input.value = "6"; // Default value
+  input.min = "1";
+
+  const removeButton = document.createElement("button");
+  removeButton.classList.add("remove-button");
+  removeButton.textContent = "-";
+  removeButton.onclick = () => removeSelection(selectionDiv);
+
+  selectionDiv.appendChild(input);
+  selectionDiv.appendChild(removeButton);
+  oddsContainer.appendChild(selectionDiv);
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  addSelection(); // Add an initial selection on load
+});

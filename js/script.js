@@ -72,6 +72,19 @@ const addSelection = () => {
   oddsContainer.appendChild(selectionDiv);
 };
 
+const removeSelection = (selectionDiv) => {
+  selectionDiv.remove();
+  reNumberSelections(); // Renumber after removal
+};
+
+const reNumberSelections = () => {
+  const oddsContainer = document.getElementById("odds-container");
+  const selections = oddsContainer.querySelectorAll(".selection .odds"); // Get only the odds inputs
+  selections.forEach((input, index) => {
+    input.placeholder = `Odds for selection ${index + 1}`;
+  });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   addSelection(); // Add an initial selection on load
 });

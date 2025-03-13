@@ -43,11 +43,11 @@ const calculateEachWayAccumulator = () => {
   let totalProfit = totalReturn - 2 * stake;
 
   document.getElementById("result").innerHTML = `
-            <p>Win Accumulator Return: £${winReturn.toFixed(2)}</p>
-            <p>Place Accumulator Return: £${placeReturn.toFixed(2)}</p>
-            <p>Total Return: £${totalReturn.toFixed(2)}</p>
-            <p>Total Profit: £${totalProfit.toFixed(2)}</p>
-        `;
+          <p>Win Accumulator Return: £${winReturn.toFixed(2)}</p>
+          <p>Place Accumulator Return: £${placeReturn.toFixed(2)}</p>
+          <p>Total Return: £${totalReturn.toFixed(2)}</p>
+          <p>Total Profit: £${totalProfit.toFixed(2)}</p>
+      `;
 };
 
 const addSelection = () => {

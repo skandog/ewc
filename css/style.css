@@ -44,80 +44,87 @@ select {
   font-size: 16px;
 }
 
-.plus-button:hover {
-  /* Slightly darker white on hover */
-  background-color: #f9f9f9;
+select {
+  /* Remove default arrow and style it */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 30px; /* Make space for the arrow */
 }
 
-.plus-button::before,
-.plus-button::after {
-  content: "";
-  position: absolute;
-  background-color: #ccc;
+#selections-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Space between heading and button */
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.plus-button::before {
-  width: 2px;
-  height: 10px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.plus-button,
+.remove-button {
+  width: 30px;
+  height: 30px;
+  background-color: #373a3d;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #34c0ca;
+  font-size: 20px;
+  line-height: 1;
 }
-
-.plus-button::after {
-  width: 10px;
-  height: 2px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.plus-button:hover,
+.remove-button:hover {
+  background-color: #ddd;
+  transform: scale(1.1);
 }
 .remove-button {
-  width: 24px;
-  height: 24px;
-  background-color: white; /* Match plus background */
-  border: 1px hidden #fff8f8; /* Match plus border */
-  border-radius: 50%;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Match plus transition */
-}
-
-.remove-button:hover {
-  background-color: #f9f9f9; /* Match plus hover */
-}
-
-.remove-button::before {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 2px;
-  background-color: #999; /* Light gray minus */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: background-color 0.3s ease; /* Added background transition to pseudo */
-}
-
-.remove-button:hover::before {
-  background-color: #333; /* Slightly darker gray on hover */
+  margin-left: auto;
 }
 
 .selection {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.odds {
+  flex: 1;
+  margin: 0 10px 0 0 !important;
+}
+.odds-container {
+  width: 100%;
 }
 
 #calc-button {
   background-color: #007bff;
   color: white;
   border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#calc-button:hover {
+  background-color: #0056b3;
 }
 
 .result {
-  margin-top: 15px;
+  margin-top: 25px;
   font-weight: bold;
+  text-align: center;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
 }

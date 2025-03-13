@@ -1,6 +1,12 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #f2faff;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 .container {
   max-width: 400px;

@@ -59,7 +59,7 @@ const addSelection = () => {
   input.type = "number";
   input.classList.add("odds");
   input.placeholder = `Odds for selection ${oddsContainer.children.length + 1}`;
-  input.value = "6"; // Default value
+  input.value = Math.floor(Math.random() * 10) + 1; // Initial random value
   input.min = "1";
 
   const removeButton = document.createElement("button");

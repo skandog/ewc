@@ -2,7 +2,7 @@ const calculateEachWayAccumulator = () => {
   // Get the stake and place fraction values
   let stake = parseFloat(document.getElementById("stake").value) || 0;
   let placeFraction =
-    parseFloat(document.getElementById("placeFraction").value) || 0;
+    parseFloat(document.getElementById("eachWayFraction").value) || 0;
   let oddsInputs = document.querySelectorAll(".odds");
 
   //   Check if the stake and place fraction values are valid

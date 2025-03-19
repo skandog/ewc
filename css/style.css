@@ -96,12 +96,18 @@ select {
   margin-bottom: 10px;
 }
 
-.odds {
-  flex: 1;
-  margin: 0 10px 0 0 !important;
-}
 .odds-container {
   width: 100%;
+}
+
+.odds {
+  flex: 2;
+  margin: 0 10px 0 0 !important;
+}
+
+.place-fraction {
+  flex: 1;
+  margin: 0 10px 0 0 !important;
 }
 
 #calc-button {
@@ -128,3 +134,4 @@ select {
   border-top: 1px solid #eee;
   padding-top: 20px;
 }
+

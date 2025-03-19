@@ -1,12 +1,11 @@
 const calculateEachWayAccumulator = () => {
   // Get the stake and place fraction values
   let stake = parseFloat(document.getElementById("stake").value) || 0;
-  let placeFraction =
-    parseFloat(document.getElementById("eachWayFraction").value) || 0;
+  let placeFractionInputs = document.querySelectorAll(".place-fraction");
   let oddsInputs = document.querySelectorAll(".odds");
 
   // Check if the stake and place fraction values are valid
-  if (stake <= 0 || placeFraction <= 0) {
+  if (stake <= 0 ) {
     document.getElementById("result").innerHTML =
       "<p style='color:red;'>Please enter valid stake and place fraction.</p>";
     return;
@@ -18,12 +17,11 @@ const calculateEachWayAccumulator = () => {
   let placeAccumulator = 1;
   let validOddsCount = 0;
 
-  oddsInputs.forEach(({ value }) => {
-    let winOdds = parseFloat(value);
+  oddsInputs.forEach(({ value }, index) => {
+    let winOdds = parseFloat( value ) || 0;
+    let placeFraction = parseFloat(placeFractionInputs[index]?.value) || 0;
 
-    // each additional odds value entered will be multiplied to the accumulator
-    // and the place odds will be calculated and multiplied to the place accumulator
-    if (!isNaN(winOdds) && winOdds > 1) {
+    if (!isNaN(winOdds) && winOdds > 1 && placeFraction > 0 && placeFraction <= 1) {
       winAccumulator *= winOdds;
       let placeOdds = 1 + (winOdds - 1) * placeFraction;
       placeAccumulator *= placeOdds;
@@ -33,7 +31,7 @@ const calculateEachWayAccumulator = () => {
 
   if (validOddsCount === 0) {
     document.getElementById("result").innerHTML =
-      "<p style='color:red;'>Enter at least one valid odds value.</p>";
+      "<p style='color:red;'>Enter at least one valid odds value and place fraction.</p>";
     return;
   }
 
@@ -55,19 +53,31 @@ const addSelection = () => {
   const selectionDiv = document.createElement("div");
   selectionDiv.classList.add("selection");
 
-  const input = document.createElement("input");
-  input.type = "number";
-  input.classList.add("odds");
-  input.placeholder = `Odds for selection ${oddsContainer.children.length + 1}`;
-  input.value = Math.floor(Math.random() * 10) + 1; // Initial random value
-  input.min = "1";
+  const oddsInput = document.createElement("input");
+  oddsInput.type = "number";
+  oddsInput.classList.add("odds");
+  oddsInput.placeholder = `Odds for selection ${oddsContainer.children.length + 1}`;
+  oddsInput.value = Math.floor(Math.random() * 10) + 1; // Initial random value
+  oddsInput.min = "1";
+
+  // Dropdown for place fraction
+  const placeFractionSelect = document.createElement("select");
+  placeFractionSelect.classList.add("place-fraction");
+  placeFractionSelect.innerHTML = `
+    <option value="0.25">1/4</option>
+    <option value="0.2">1/5</option>
+    <option value="0.1666666667">1/6</option>
+    <option value="0.1428571429">1/7</option>
+    <option value="0.125">1/8</option>
+  `;
 
   const removeButton = document.createElement("button");
   removeButton.classList.add("remove-button");
   removeButton.textContent = "-";
   removeButton.onclick = () => removeSelection(selectionDiv);
 
-  selectionDiv.appendChild(input);
+  selectionDiv.appendChild(oddsInput);
+  selectionDiv.appendChild(placeFractionSelect);
   selectionDiv.appendChild(removeButton);
   oddsContainer.appendChild(selectionDiv);
 };

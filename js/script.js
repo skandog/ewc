@@ -72,23 +72,22 @@ const calculateEachWayAccumulator = () => {
   renderReturnSummary(winReturn, placeReturn, totalReturn, totalProfit);
 };
 
-const addSelection = () => {
-  const oddsContainer = document.getElementById("odds-container");
-  const selectionDiv = document.createElement("div");
-  selectionDiv.classList.add("selection");
-
+const createOddsInput = (index) => {
   const oddsInput = document.createElement("input");
+
   oddsInput.type = "number";
   oddsInput.classList.add("odds");
-  oddsInput.placeholder = `Odds for selection ${
-    oddsContainer.children.length + 1
-  }`;
+  oddsInput.placeholder = `Odds for selection ${index}`;
   oddsInput.value = Math.floor(Math.random() * 10) + 1; // Initial random value
   oddsInput.min = "1";
 
-  // Dropdown for place fraction
+  return oddsInput;
+};
+
+const createPlaceFractionDropdown = () => {
   const placeFractionSelect = document.createElement("select");
   placeFractionSelect.classList.add("place-fraction");
+
   placeFractionSelect.innerHTML = `
     <option value="0.25">1/4</option>
     <option value="0.2">1/5</option>
@@ -97,10 +96,27 @@ const addSelection = () => {
     <option value="0.125">1/8</option>
   `;
 
+  return placeFractionSelect;
+};
+
+const createRemoveButton = (selectionDiv) => {
   const removeButton = document.createElement("button");
   removeButton.classList.add("remove-button");
   removeButton.textContent = "-";
   removeButton.onclick = () => removeSelection(selectionDiv);
+
+  return removeButton;
+};
+
+const addSelection = () => {
+  const oddsContainer = document.getElementById("odds-container");
+  const selectionDiv = document.createElement("div");
+  selectionDiv.classList.add("selection");
+
+  const index = oddsContainer.children.length + 1;
+  const oddsInput = createOddsInput(index);
+  const placeFractionSelect = createPlaceFractionDropdown();
+  const removeButton = createRemoveButton(selectionDiv);
 
   selectionDiv.appendChild(oddsInput);
   selectionDiv.appendChild(placeFractionSelect);

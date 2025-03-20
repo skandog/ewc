@@ -1,3 +1,26 @@
+const calculateReturns = (stake, winAccumulator, placeAccumulator) => {
+  let winReturn = stake * winAccumulator;
+  let placeReturn = stake * placeAccumulator;
+  let totalReturn = winReturn + placeReturn;
+  let totalProfit = totalReturn - 2 * stake;
+
+  return { winReturn, placeReturn, totalReturn, totalProfit };
+};
+
+const renderReturnSummary = (
+  winReturn,
+  placeReturn,
+  totalReturn,
+  totalProfit
+) => {
+  document.getElementById("result").innerHTML = `
+          <p>Win Accumulator Return: £${winReturn.toFixed(2)}</p>
+          <p>Place Accumulator Return: £${placeReturn.toFixed(2)}</p>
+          <p>Total Return: £${totalReturn.toFixed(2)}</p>
+          <p>Total Profit: £${totalProfit.toFixed(2)}</p>
+      `;
+};
+
 const calculateEachWayAccumulator = () => {
   // Get the stake and place fraction values
   let stake = parseFloat(document.getElementById("stake").value) || 0;
@@ -40,17 +63,13 @@ const calculateEachWayAccumulator = () => {
     return;
   }
 
-  let winReturn = stake * winAccumulator;
-  let placeReturn = stake * placeAccumulator;
-  let totalReturn = winReturn + placeReturn;
-  let totalProfit = totalReturn - 2 * stake;
+  let { winReturn, placeReturn, totalReturn, totalProfit } = calculateReturns(
+    stake,
+    winAccumulator,
+    placeAccumulator
+  );
 
-  document.getElementById("result").innerHTML = `
-          <p>Win Accumulator Return: £${winReturn.toFixed(2)}</p>
-          <p>Place Accumulator Return: £${placeReturn.toFixed(2)}</p>
-          <p>Total Return: £${totalReturn.toFixed(2)}</p>
-          <p>Total Profit: £${totalProfit.toFixed(2)}</p>
-      `;
+  renderReturnSummary(winReturn, placeReturn, totalReturn, totalProfit);
 };
 
 const addSelection = () => {

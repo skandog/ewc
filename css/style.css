@@ -105,6 +105,12 @@ select {
   margin: 0 10px 0 0 !important;
 }
 
+.remove-button:disabled {
+  background-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+}
+
 .place-fraction {
   flex: 1;
   margin: 0 10px 0 0 !important;

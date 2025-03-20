@@ -5,7 +5,7 @@ const calculateEachWayAccumulator = () => {
   let oddsInputs = document.querySelectorAll(".odds");
 
   // Check if the stake and place fraction values are valid
-  if (stake <= 0 ) {
+  if (stake <= 0) {
     document.getElementById("result").innerHTML =
       "<p style='color:red;'>Please enter valid stake and place fraction.</p>";
     return;
@@ -18,10 +18,15 @@ const calculateEachWayAccumulator = () => {
   let validOddsCount = 0;
 
   oddsInputs.forEach(({ value }, index) => {
-    let winOdds = parseFloat( value ) || 0;
+    let winOdds = parseFloat(value) || 0;
     let placeFraction = parseFloat(placeFractionInputs[index]?.value) || 0;
 
-    if (!isNaN(winOdds) && winOdds > 1 && placeFraction > 0 && placeFraction <= 1) {
+    if (
+      !isNaN(winOdds) &&
+      winOdds > 1 &&
+      placeFraction > 0 &&
+      placeFraction <= 1
+    ) {
       winAccumulator *= winOdds;
       let placeOdds = 1 + (winOdds - 1) * placeFraction;
       placeAccumulator *= placeOdds;
@@ -56,7 +61,9 @@ const addSelection = () => {
   const oddsInput = document.createElement("input");
   oddsInput.type = "number";
   oddsInput.classList.add("odds");
-  oddsInput.placeholder = `Odds for selection ${oddsContainer.children.length + 1}`;
+  oddsInput.placeholder = `Odds for selection ${
+    oddsContainer.children.length + 1
+  }`;
   oddsInput.value = Math.floor(Math.random() * 10) + 1; // Initial random value
   oddsInput.min = "1";
 

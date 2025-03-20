@@ -21,6 +21,8 @@ const renderReturnSummary = (
       `;
 };
 
+const clearResults = () => (document.getElementById("result").innerHTML = "");
+
 const calculateEachWayAccumulator = () => {
   // Get the stake and place fraction values
   let stake = parseFloat(document.getElementById("stake").value) || 0;
@@ -107,7 +109,7 @@ const addSelection = () => {
   selectionDiv.appendChild(removeButton);
   oddsContainer.appendChild(selectionDiv);
 
-  document.getElementById("result").innerHTML = ""; // Clear results
+  clearResults();
   updateRemoveButtonsState();
 };
 
@@ -117,7 +119,7 @@ const removeSelection = (selectionDiv) => {
     selectionDiv.remove();
     reNumberSelections(); // Renumber after removal
     updateRemoveButtonsState(); // Update the state of remove buttons
-    document.getElementById("result").innerHTML = ""; // Clear results
+    clearResults();
   }
 };
 

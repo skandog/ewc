@@ -46,12 +46,10 @@ const calculateEachWayAccumulator = () => {
     let winOdds = parseFloat(value) || 0;
     let placeFraction = parseFloat(placeFractionInputs[index]?.value) || 0;
 
-    if (
-      !isNaN(winOdds) &&
-      winOdds > 1 &&
-      placeFraction > 0 &&
-      placeFraction <= 1
-    ) {
+    const isValidOddsAndFraction =
+      !isNaN(winOdds) && winOdds > 1 && placeFraction > 0 && placeFraction <= 1;
+
+    if (isValidOddsAndFraction) {
       winAccumulator *= winOdds;
       let placeOdds = 1 + (winOdds - 1) * placeFraction;
       placeAccumulator *= placeOdds;

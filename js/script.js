@@ -88,6 +88,7 @@ const addSelection = () => {
   selectionDiv.appendChild(removeButton);
   oddsContainer.appendChild(selectionDiv);
 
+  document.getElementById("result").innerHTML = ""; // Clear results
   updateRemoveButtonsState();
 };
 
@@ -97,23 +98,21 @@ const removeSelection = (selectionDiv) => {
     selectionDiv.remove();
     reNumberSelections(); // Renumber after removal
     updateRemoveButtonsState(); // Update the state of remove buttons
+    document.getElementById("result").innerHTML = ""; // Clear results
   }
 };
-
 
 const updateRemoveButtonsState = () => {
   const oddsContainer = document.getElementById("odds-container");
   const removeButtons = oddsContainer.querySelectorAll(".remove-button");
-  console.log(removeButtons)
-  console.log(removeButtons.length)
+
   removeButtons.forEach((button, index) => {
-    
     button.disabled = removeButtons.length === 1; // Disable if only one selection remains
     button.style.opacity = removeButtons.length === 1 ? "0.5" : "1"; // Style for disabled state
-    button.style.cursor = removeButtons.length === 1 ? "not-allowed" : "pointer";
+    button.style.cursor =
+      removeButtons.length === 1 ? "not-allowed" : "pointer";
   });
-}
-
+};
 
 const reNumberSelections = () => {
   const oddsContainer = document.getElementById("odds-container");
@@ -122,7 +121,6 @@ const reNumberSelections = () => {
     input.placeholder = `Odds for selection ${index + 1}`;
   });
 };
-
 
 document.addEventListener("DOMContentLoaded", () => {
   addSelection(); // Add an initial selection on load
